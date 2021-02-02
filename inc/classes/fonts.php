@@ -12,10 +12,9 @@ $wp_customize->add_section( 'font_options', array(
     'capability'                => 'edit_theme_options',
 ));
 
-
 // Paragraph font options
 $wp_customize->add_setting( 'webfont', array(
-    'default'   		        => 'Hiragino Sans',
+    'default'   		        => 'Noto Sans JP',
     'transport' 			    => 'refresh',
     'sanitize_callback' 		=> 'sanitize_text_field'
 ) );
@@ -27,7 +26,6 @@ $wp_customize->add_control( 'webfont', array(
     'type' 				        => 'select',
     'capability' 		        => 'edit_theme_options', 
     'choices' 			        => array( 
-        'Hiragino Sans' 	    => esc_html__( 'Hiragino Sans', 'yoneko' ),
         'Noto Sans JP' 	        => esc_html__( 'Noto Sans JP', 'yoneko' ),
         'Noto Serif JP' 	    => esc_html__( 'Noto Serif JP', 'yoneko' ),
         'M PLUS Rounded 1c' 	=> esc_html__( 'M PLUS Rounded 1c', 'yoneko' ),

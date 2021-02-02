@@ -7,9 +7,9 @@
  * @package yoneko
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if ( ! defined( 'YONEKO_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( 'YONEKO_VERSION', '1.0.5' );
 }
 
 if ( ! function_exists( 'yoneko_setup' ) ) :
@@ -61,6 +61,7 @@ if ( ! function_exists( 'yoneko_setup' ) ) :
 		add_theme_support(
 			'html5',
 			array(
+				'navigation-widgets',
 				'search-form',
 				'comment-form',
 				'comment-list',
@@ -78,7 +79,12 @@ if ( ! function_exists( 'yoneko_setup' ) ) :
 				'yoneko_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
-					'default-image' => '',
+					'default-image'          => '',
+					'default-preset'         => 'default', 
+					'default-position-x'     => 'left',   
+					'default-position-y'     => 'top',   
+					'default-size'           => 'auto', 
+					'default-repeat'         => 'no-repeat',  
 				)
 			)
 		);
@@ -127,14 +133,24 @@ function yoneko_widgets_init() {
 			'name'          => esc_html__( 'Sidebar', 'yoneko' ),
 			'id'            => 'sidebar-1',
 			'description'   => esc_html__( 'Add widgets here.', 'yoneko' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'before_widget' => '<section role="navigation" aria-label="[title]" id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'before_title'  => '<div class="widget-title">',
+			'after_title'   => '</div>',
 		)
 	);
 }
 add_action( 'widgets_init', 'yoneko_widgets_init' );
+
+
+/* Credit:  Stp Accessibility Theme by Joseph LoPreste */
+
+function yoneko_accessibility_widget_func($params) {
+	$name = isset($params[0]['widget_name']) ? $params[0]['widget_name'] : "";
+	$params[0]['before_widget'] = str_replace('[title]', esc_attr($name), $params[0]['before_widget'] );
+	return $params;
+}
+add_filter('dynamic_sidebar_params', 'yoneko_accessibility_widget_func');
 
 /**
  * Customizer google fonts
@@ -145,10 +161,8 @@ function yoneko_google_font_script(){
 	 $body_font 	= 	esc_html(get_theme_mod('webfont'));
 	 $font_choice 	= 	str_replace(" ", "+", $body_font);
 	 
-	 $title_font 	= 	esc_html(get_theme_mod('titlefont'));
-	 $second_font_choice 	= 	str_replace(" ", "+", $title_font);
-	 
-	 wp_enqueue_style( 'yoneko-google-fonts', 'https://fonts.googleapis.com/css2?family='. $font_choice . "&amp;family=" . $second_font_choice .'&amp;display=swap' );
+	 wp_enqueue_style( 'yoneko-google-fonts', 'https://fonts.googleapis.com/css2?family='. $font_choice . '&display=swap' );
+
 }
 add_action('wp_enqueue_scripts','yoneko_google_font_script');
 
@@ -158,13 +172,14 @@ add_action('wp_enqueue_scripts','yoneko_google_font_script');
  */
 function yoneko_scripts() {
 	
-	wp_enqueue_style( 'yoneko-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'yoneko-style', get_stylesheet_uri(), array(), YONEKO_VERSION );
 	wp_style_add_data( 'yoneko-style', 'rtl', 'replace' );
 	
 	include( get_template_directory() . '/inc/inline-style.php' );
 	wp_add_inline_style( 'yoneko-style', $inline_styles );
 
-	wp_enqueue_script( 'yoneko-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'yoneko-navigation', get_template_directory_uri() . '/js/navigation.js', array(), YONEKO_VERSION, true );
+	
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

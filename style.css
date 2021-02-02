@@ -4,8 +4,9 @@ Theme URI: https://github.com/TeBenachi/yoneko
 Author: TeBenachi
 Author URI: https://profiles.wordpress.org/utz119/
 Description: Yoneko is named after my grandmother for her love of writing. Yoneko is suitable for bloggers and educators who want to focus on writing. The unique homepage straightforwardly displays the subject lines without thumbnails for easy scanning.  This distinctive layout also allows readers to find what they want quickly. Yoneko is Japanese typography in mind.  It comes with pre-installed google fonts, including six Japanese fonts, Noto Sans JP, Noto Serif JP, M PLUS Rounded 1c, Kosugi Maru, Sawarabi Mincho, and Sawarabi Gothic, as well as three sans-serif fonts, Lato, Roboto, and Merriweather. 
-Version: 1.0
-Tested up to: 5.4
+Version: 1.0.5
+Requires at least: 5.2
+Tested up to: 5.6
 Requires PHP: 7.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -643,7 +644,8 @@ video {
 	- Navigation
 		- Posts & Comments navigation
     - Posts and pages
-    - Forms
+	- Forms
+	- Table
 	- Comments
 	- Widgets
 	- Media
@@ -674,15 +676,11 @@ textarea {
   font-size: 16px;
   letter-spacing: 0.02em;
   line-height: 1.55;
-  --text-opacity: 1;
-  color: #1a202c;
-  color: rgba(26, 32, 44, var(--text-opacity))
+  color: #0A0A0A;
 }
 
 .base-text-color {
-  --text-opacity: 1;
-  color: #1a202c;
-  color: rgba(26, 32, 44, var(--text-opacity))
+  color: #0A0A0A;
 }
 
 h1,
@@ -720,6 +718,14 @@ h5 {
 
 h6 {
   font-size: 0.75rem
+}
+
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+  margin-bottom: 0.5rem
 }
 
 h1.site-title,
@@ -856,6 +862,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 .post-navigation .post-title, 
 .entry-title, 
 .entry-title-list,
@@ -937,6 +949,7 @@ svg {
 /* Links
 --------------------------------------------- */
 
+a, 
 a:link,
 a:visited {
   --text-opacity: 1;
@@ -944,30 +957,29 @@ a:visited {
   color: rgba(26, 32, 44, var(--text-opacity))
 }
 
-.inner-right .entry-content p a,
-.inner-right .entry-content p a:link,
-.inner-right .entry-content p a:visited {
-  --text-opacity: 1;
-  color: #1a202c;
-  color: rgba(26, 32, 44, var(--text-opacity));
-  border-bottom-width: 1px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  --border-opacity: 1;
-  border-color: #718096;
-  border-color: rgba(113, 128, 150, var(--border-opacity))
-}
-
 a:hover,
 a:focus,
 a:active {
-  border-bottom-width: 2px;
-  border-style: dotted
+  border-style: none
 }
 
 a:hover,
 a:active {
   outline: 0;
+}
+
+.inner-right article a,
+.inner-right article a:link,
+.inner-right article a:visited,
+.entry-meta-author .author a, 
+.reply a {
+  text-decoration: underline
+}
+
+.inner-right article .entry-title-list h2 a,
+.inner-right article .entry-title-list h2 a:link,
+.inner-right article .entry-title-list h2 a:visited {
+  text-decoration: none
 }
 
 .go-top a {
@@ -1050,11 +1062,12 @@ a:active {
 /* Navigation
 --------------------------------------------- */
 
-/*	5. Menu Modal
-/* -------------------------------------------------------------------------- */
+/*	Menu Modal 
+--------------------- */
 
 .menu-modal {
-  background: #fff;
+  /* background: #fff; */
+  background: transparent;
   display: none;
   opacity: 0;
   overflow-y: auto;
@@ -1096,7 +1109,7 @@ a:active {
   overflow: auto;
   -ms-overflow-style: auto;
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 5.5rem 1rem 2rem 1rem;
   margin: 0 auto;
 }
 
@@ -1106,11 +1119,13 @@ a:active {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  background-color: #f7f7f7;
+  background: transparent;
 }
 
 button.toggle {
   border: 2px solid transparent;
+  position: relative;
+  z-index: 9999;
 }
 
 .close-button-wrapper {
@@ -1129,14 +1144,21 @@ button.close-nav-toggle {
   line-height: 1rem;
 }
 
-button.close-nav-toggle:hover,
-button.close-nav-toggle:active {
+button.close-nav-toggle:hover {
   padding: 0.5rem 1rem;
   margin:0;
 }
 
 .menu-modal .menu-top {
   flex-shrink: 0;
+}
+
+button.toggle.active {
+  display: none;
+}
+
+body:not(.showing-menu-modal) .close-button-wrapper button {
+  display: none;
 }
 
 /* Main Menu --------------------------------- */
@@ -1441,17 +1463,10 @@ button.sub-menu-toggle.active svg{
 
 /* Post Navigation */
 
-.posts-navigation .nav-links {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between
-}
-
 .post-navigation .nav-links {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-top-width: 1px;
@@ -1462,18 +1477,19 @@ button.sub-menu-toggle.active svg{
   border-color: rgba(237, 242, 247, var(--border-opacity))
 }
 
-.nav-next {
-  text-align: right
+.post-navigation .nav-links a {
+  display: block;
 }
 
 .nav-next {
+  text-align: right;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top-width: 1px;
-  border-style: dotted;
+  border-style: solid;
   --border-opacity: 1;
-  border-color: #e2e8f0;
-  border-color: rgba(226, 232, 240, var(--border-opacity))
+  border-color: #edf2f7;
+  border-color: rgba(237, 242, 247, var(--border-opacity))
 }
 
 @media (min-width: 768px) {
@@ -1522,7 +1538,7 @@ a.wp-block-file__button {
   display: block;
   margin-top: 0.25rem;
   padding: 0.25rem;
-  border-style: none;
+  border-width: 2px;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
@@ -1530,6 +1546,7 @@ a.wp-block-file__button {
   cursor: pointer;
   background-color: #f7f7f7;
   color: #000213;
+  border-color: #b1b1b1;
 }
 
 textarea {
@@ -1537,7 +1554,6 @@ textarea {
   display: block;
   margin-top: 0.25rem;
   padding: 0.25rem;
-  border-style: none;
   background-color: #f7f7f7;
 }
 
@@ -1556,14 +1572,16 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 input[type="search"],
+textarea,
 .post-password-form input[type="password"] {
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  border-style: none;
+  border-width: 2px;
   background-color: #f7f7f7;
+  border-color: #b1b1b1;
 }
 
 input[type="text"]:focus,
@@ -1581,53 +1599,67 @@ input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 input[type="search"]:focus,{
-  padding: 0.5rem;
-  border-style: none
+  padding: 0.5rem
+}
+
+input[type="search"] {
+  background-color: #FFFFFF;
 }
 
 .search-wrapper {
   width: 100%;
-  background-color: #f7f7f7;
+  padding-bottom: 0px;
+  border:2px solid transparent;
 }
 
 .form-field {
   width: 90%;
 }
 
+input[type="search"] {
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
+  padding: 0.5rem;
+}
+
 .form-button {
-  width: 10%;
+  width: 9%;
   align-items: center;
   vertical-align: middle;
-  background-color: #f7f7f7;
-}
-
-input::-moz-placeholder, textarea::-moz-placeholder  {
-  --text-opacity: 1;
-  color: #1a202c;
-  color: rgba(26, 32, 44, var(--text-opacity))
-}
-
-input::-moz-placeholder, textarea::-moz-placeholder,
-input:-ms-input-placeholder, textarea:-ms-input-placeholder,
-input::placeholder,
-textarea::placeholder  {
-  --text-opacity: 1;
-  color: #1a202c;
-  color: rgba(26, 32, 44, var(--text-opacity))
+  background-color: transparent
 }
 
 button.search-submit[type="submit"]{
   --text-opacity: 1;
   color: #1a202c;
   color: rgba(26, 32, 44, var(--text-opacity));
-  border-style: none;
+  border-width: 2px;
+  border-color: transparent;
   margin: 0;
-  padding: 0.2rem;
-  background-color: #f7f7f7;
+  padding: 0rem;
+  background-color: #FFFFFF;
 }
 
 button.search-submit[type="submit"]:focus{
-  padding: 0.2rem;
+  padding: 0rem;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #030303;
+  opacity: 1;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #030303;
+  opacity: 1;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #030303;
+  opacity: 1;
 }
 
 .widget_search,
@@ -1653,6 +1685,36 @@ button.search-submit[type="submit"]:focus{
 
 select {
   border: 1px solid #ccc;
+}
+
+/* Table
+--------------------------------------------- */
+
+table {
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
+  table-layout: fixed
+}
+
+thead, 
+th,
+tr,
+td {
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
+th a,
+td a {
+  text-decoration: underline
 }
 
 /* Comments
@@ -1737,11 +1799,6 @@ ol.comment-list li article {
   vertical-align: middle
 }
 
-.comment-meta .comment-author .fn a {
-  font-weight: 600;
-  font-size: 0.875rem
-}
-
 .comment-body .vcard img {
   border-radius: 9999px;
   float: left;
@@ -1765,6 +1822,10 @@ ol.comment-list li article {
   max-width: 100%;
 }
 
+.widget-area ul {
+  list-style: none;
+}
+
 .widget-area ul > li {
   font-size: 0.875rem;
   line-height: 2
@@ -1782,15 +1843,32 @@ ol.comment-list li article {
   border-width: 0
 }
 
-.site-header .widget_categories ul {
+.site-header .widget.widget_recent_comments li.recentcomments {
+  display: block;
+  padding-right: 0.5rem;
+  line-height: 1.75rem
+}
+
+.site-header .widget.widget_recent_comments li.recentcomments a {
+  border-bottom-width: 1px;
+  --border-opacity: 1;
+  border-color: #22543d;
+  border-color: rgba(34, 84, 61, var(--border-opacity))
+}
+
+.site-header .widget ul {
   list-style-type: none;
   margin: 0
 }
 
-.site-header .widget_categories li {
+.site-header .widget li {
   display: inline-flex;
-  padding-right: 0.25rem;
+  padding-right: 0.5rem;
   line-height: 1rem
+}
+
+.site-header .widget-title {
+  font-weight: 600
 }
 
 /* Media
@@ -2057,6 +2135,10 @@ ol.comment-list li article {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.border{
+  border-width: 1px;
 }
 
 .flex{

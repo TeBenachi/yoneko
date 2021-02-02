@@ -10,7 +10,8 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<div class="container inner-right">
+	<main id="primary" class="site-main" role="main" >
 
 		<section class="error-404 not-found">
 			<header class="page-header">
@@ -55,6 +56,8 @@ get_header();
 		</section><!-- .error-404 -->
 
 	</main><!-- #main -->
+	
+	</div>
+</div><!-- flex wrapper -->
 
-<?php
-get_footer();
+<?php get_footer(); ?>

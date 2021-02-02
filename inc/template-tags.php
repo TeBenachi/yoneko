@@ -123,9 +123,7 @@ if ( ! function_exists( 'yoneko_entry_footer_comments' ) ) :
 				wp_kses_post( get_the_title() )
 			),
 			
-			'<svg class="w-6 h-6 pr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" clip-rule="evenodd" />
-</svg><span class="edit-link text-small font-medium">',
+			'<svg class="w-6 h-6 pr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" clip-rule="evenodd" /></svg><span class="edit-link text-small font-medium">',
 			'</span>'
 		);
 	}
@@ -154,7 +152,7 @@ if ( ! function_exists( 'yoneko_post_thumbnail' ) ) :
 
 		<?php else : ?>
 
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
 				<?php
 					the_post_thumbnail(
 						'post-thumbnail',
@@ -202,7 +200,7 @@ if ( ! function_exists( 'yoneko_sticky_posts' ) ) :
 	function yoneko_sticky_posts() {
 
 		printf( 
-			'<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg><span class="sticky-class">' . esc_html__( 'Featured: ', 'yoneko' ) . '</span>',  
+			'<span class="sticky-class"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>' . esc_html__( 'Featured: ', 'yoneko' ) . '</span>',  
 		); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 endif;

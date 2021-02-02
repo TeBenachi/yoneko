@@ -14,8 +14,8 @@
 
 get_header();
 ?>
-	<div class="inner-right">
-		<main id="primary" class="container site-main">
+	<div class="container inner-right">
+		<main id="primary" class="site-main" role="main">
 
 			<div class="site-main-left">
 				<?php
