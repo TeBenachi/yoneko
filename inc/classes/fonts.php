@@ -14,6 +14,7 @@ $wp_customize->add_section( 'font_options', array(
 
 // Paragraph font options
 $wp_customize->add_setting( 'webfont', array(
+    'type'                      => 'theme_mod', 
     'default'   		        => 'Noto Sans JP',
     'transport' 			    => 'refresh',
     'sanitize_callback' 		=> 'sanitize_text_field'

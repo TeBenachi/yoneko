@@ -34,6 +34,7 @@
 		
 		<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
 			<div id="navigation-menu">
+
 				<button id="open-button-nav" class="toggle nav-toggle" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle" type="button" aria-label="<?php esc_attr_e( 'Open primary menu', 'yoneko' ); ?>">
 					<span class="toggle-inner">
 						<span class="toggle-icon">
@@ -41,18 +42,19 @@
 						</span>
 					</span>
 				</button>
-				
-				<div id="close-button-nav" class="close-button-wrapper">
-					<button class="toggle" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal" aria-label="<?php esc_attr_e( 'Close primary menu', 'yoneko' ); ?>">
-						<svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" /></svg>
-					</button>
-				</div>
-				
+			
 				<div id="navbareModal" class="menu-modal cover-modal header-footer-group" data-modal-target-string=".menu-modal">
 					<div class="menu-modal-inner modal-inner">
 						<div class="menu-wrapper section-inner">
+
+						<div id="close-button-nav" class="close-button-wrapper">
+							<button class="toggle" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".menu-modal" aria-label="<?php esc_attr_e( 'Close primary menu', 'yoneko' ); ?>">
+								<svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" /></svg>
+							</button>
+						</div>
+
 							
-							<nav class="expanded-menu<?php echo esc_attr( $expanded_nav_classes ); ?>" aria-label="<?php echo esc_attr_x( 'Expanded', 'menu', 'yoneko' ); ?>" role="navigation">
+							<nav class="primary-menu expanded-menu<?php echo esc_attr( $expanded_nav_classes ); ?>" aria-label="<?php echo esc_attr_x( 'Expanded', 'menu', 'yoneko' ); ?>" role="navigation">
 
 								<ul class="modal-menu">
 									<?php

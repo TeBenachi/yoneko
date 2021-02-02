@@ -129,13 +129,13 @@ yonkeo.coverModals = {
     })
   },
 
-  // Close modal on outside click.
+  //Close modal on outside click.
   outsideUntoggle: function() {
     document.addEventListener(
       "click",
       function(event) {
         var target = event.target
-        var modal = document.querySelector(".cover-modal.active")
+        var modal = document.querySelector(".modal-menu")
 
         // if target onclick is <a> with # within the href attribute
         if (event.target.tagName.toLowerCase() === "a" && event.target.hash.includes("#") && modal !== null) {
@@ -347,7 +347,7 @@ yonkeo.modalMenu = {
   init: function() {
     // If the current menu item is in a sub level, expand all the levels higher up on load.
     this.expandLevel()
-    this.keepFocusInModal()
+    //this.keepFocusInModal()
   },
 
   expandLevel: function() {
@@ -365,70 +365,70 @@ yonkeo.modalMenu = {
         })
       }
     })
-  },
-
-  keepFocusInModal: function() {
-    var _doc = document
-
-    _doc.addEventListener("keydown", function(event) {
-      var toggleTarget,
-        modal,
-        selectors,
-        elements,
-        menuType,
-        bottomMenu,
-        activeEl,
-        lastEl,
-        firstEl,
-        tabKey,
-        shiftKey,
-        clickedEl = yonkeo.toggles.clickedEl
-
-      if (clickedEl && _doc.body.classList.contains("showing-modal")) {
-        toggleTarget = clickedEl.dataset.toggleTarget
-        selectors = "input, a, button"
-        modal = _doc.querySelector(toggleTarget)
-
-        elements = modal.querySelectorAll(selectors)
-        elements = Array.prototype.slice.call(elements)
-
-        if (".menu-modal" === toggleTarget) {
-          menuType = window.matchMedia("(min-width: 1000px)").matches
-          menuType = menuType ? ".expanded-menu" : ".mobile-menu"
-
-          elements = elements.filter(function(element) {
-            return null !== element.closest(menuType) && null !== element.offsetParent
-          })
-
-          elements.unshift(_doc.querySelector(".close-nav-toggle"))
-
-          bottomMenu = _doc.querySelector(".menu-bottom > nav")
-
-          if (bottomMenu) {
-            bottomMenu.querySelectorAll(selectors).forEach(function(element) {
-              elements.push(element)
-            })
-          }
-        }
-
-        lastEl = elements[elements.length - 1]
-        firstEl = elements[0]
-        activeEl = _doc.activeElement
-        tabKey = event.keyCode === 9
-        shiftKey = event.shiftKey
-
-        if (!shiftKey && tabKey && lastEl === activeEl) {
-          event.preventDefault()
-          firstEl.focus()
-        }
-
-        if (shiftKey && tabKey && firstEl === activeEl) {
-          event.preventDefault()
-          lastEl.focus()
-        }
-      }
-    })
   }
+
+  // keepFocusInModal: function() {
+  //   var _doc = document
+
+  //   _doc.addEventListener("keydown", function(event) {
+  //     var toggleTarget,
+  //       modal,
+  //       selectors,
+  //       elements,
+  //       menuType,
+  //       bottomMenu,
+  //       activeEl,
+  //       lastEl,
+  //       firstEl,
+  //       tabKey,
+  //       shiftKey,
+  //       clickedEl = yonkeo.toggles.clickedEl
+
+  //     if (clickedEl && _doc.body.classList.contains("showing-modal")) {
+  //       toggleTarget = clickedEl.dataset.toggleTarget
+  //       selectors = "input, a, button"
+  //       modal = _doc.querySelector(toggleTarget)
+
+  //       elements = modal.querySelectorAll(selectors)
+  //       elements = Array.prototype.slice.call(elements)
+
+  //       if (".menu-modal" === toggleTarget) {
+  //         menuType = window.matchMedia("(min-width: 1000px)").matches
+  //         menuType = menuType ? ".expanded-menu" : ".mobile-menu"
+
+  //         elements = elements.filter(function(element) {
+  //           return null !== element.closest(menuType) && null !== element.offsetParent
+  //         })
+
+  //         elements.unshift(_doc.querySelector(".close-nav-toggle"))
+
+  //         bottomMenu = _doc.querySelector(".menu-bottom > nav")
+
+  //         if (bottomMenu) {
+  //           bottomMenu.querySelectorAll(selectors).forEach(function(element) {
+  //             elements.push(element)
+  //           })
+  //         }
+  //       }
+
+  //       lastEl = elements[elements.length - 1]
+  //       firstEl = elements[0]
+  //       activeEl = _doc.activeElement
+  //       tabKey = event.keyCode === 9
+  //       shiftKey = event.shiftKey
+
+  //       if (!shiftKey && tabKey && lastEl === activeEl) {
+  //         event.preventDefault()
+  //         firstEl.focus()
+  //       }
+
+  //       if (shiftKey && tabKey && firstEl === activeEl) {
+  //         event.preventDefault()
+  //         lastEl.focus()
+  //       }
+  //     }
+  //   })
+  // }
 } // yonkeo.modalMenu
 
 /*	-----------------------------------------------------------------------------------------------
@@ -447,7 +447,7 @@ yonkeo.primaryMenu = {
     var links,
       i,
       len,
-      menu = document.querySelector(".primary-menu-wrapper")
+      menu = document.querySelector(".modal-menu")
 
     if (!menu) {
       return false
@@ -837,7 +837,7 @@ function yonkeoFindParents(target, query) {
 
 // Listen for and trap the keyboard
 
-var nav = document.querySelector("#navigation-menu")
+var nav = document.querySelector(".menu-modal")
 
 nav.addEventListener("keydown", trapTabKey)
 

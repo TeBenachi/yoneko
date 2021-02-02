@@ -11,7 +11,7 @@ $yoneko_unique_id = wp_unique_id( 'search-form-' );
 	<div class="search-wrapper flex flex-row flex-nowrap justify-between"> 
         <div class="flex form-field">
             <label class="search-form-label" for="<?php echo esc_attr($yoneko_unique_id); ?>">
-                <span class="sr-only"><?php esc_attr_e( 'Search', 'yoneko' ); ?></span>
+                <span class="sr-only"><?php esc_attr( 'Search', 'yoneko' ); ?></span>
             </label>
             <input type="search" id="<?php echo esc_attr($yoneko_unique_id); ?>" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder', 'yoneko' ); ?>" value="<?php echo esc_attr(get_search_query()); ?>" name="s" />
         </div>

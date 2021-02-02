@@ -24,6 +24,7 @@ Yoneko is developed using Tailwind CSS version 2.0, which no longer support IE11
 = 1.0.6 - Feburary 2, 2021 =
 * Fix search form
 * Fix accesssibility issues on navigation
+* Add defautl font for customizer issue
 
 = 1.0.5 - January 8, 2021 =
 * Fix admin hover/focus link color

@@ -156,12 +156,23 @@ add_filter('dynamic_sidebar_params', 'yoneko_accessibility_widget_func');
  * Customizer google fonts
  */
 
+function yoneko_google_font_preconnect() {
+
+	echo '<link rel="preconnect" href="'. 'https://fonts.gstatic.com/' . '" >';
+ }
+ add_action( 'wp_head', 'yoneko_google_font_preconnect' );
+
 function yoneko_google_font_script(){
 	
-	 $body_font 	= 	esc_html(get_theme_mod('webfont'));
+	 $body_font 		= 	esc_html(get_theme_mod('webfont'));
 	 $font_choice 	= 	str_replace(" ", "+", $body_font);
 	 
-	 wp_enqueue_style( 'yoneko-google-fonts', 'https://fonts.googleapis.com/css2?family='. $font_choice . '&display=swap' );
+	 wp_enqueue_style( 
+		 'yoneko-google-fonts', 
+		 'https://fonts.googleapis.com/css2?family='. $font_choice . '',  
+		 array(), 
+		 null  
+	);
 
 }
 add_action('wp_enqueue_scripts','yoneko_google_font_script');
