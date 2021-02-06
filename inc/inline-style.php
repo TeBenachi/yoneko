@@ -1,5 +1,9 @@
 <?php
 
+if( !get_theme_mod( 'webfont' )) {
+  set_theme_mod( 'webfont','Noto Sans JP' );
+}
+
 $body_font 	        = 	esc_html(get_theme_mod('webfont'));
 $accent_color 	    = 	esc_html(get_theme_mod('accentcolor'));
 

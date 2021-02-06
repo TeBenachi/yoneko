@@ -5,7 +5,7 @@ Tags: Accessibility Ready, custom-logo, custom-menu, featured-images, threaded-c
 Requires at least: 5.2
 Tested up to: 5.6
 Requires PHP: 7.4
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -21,9 +21,13 @@ Yoneko is developed using Tailwind CSS version 2.0, which no longer support IE11
 
 == Changelog ==
 
+= 1.0.7 - Feburary 6, 2021 =
+* Fix translate escape on search form 
+
 = 1.0.6 - Feburary 2, 2021 =
 * Fix search form
 * Fix accesssibility issues on navigation
+* Add defautl font for customizer issue
 
 = 1.0.5 - January 8, 2021 =
 * Fix admin hover/focus link color

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Yoneko\n"
-"POT-Creation-Date: 2021-01-10 14:44-0500\n"
-"PO-Revision-Date: 2021-01-10 14:46-0500\n"
+"POT-Creation-Date: 2021-02-06 16:32-0500\n"
+"PO-Revision-Date: 2021-02-06 17:25-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -20,7 +20,6 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
-"X-Poedit-SearchPathExcluded-1: node_modules\n"
 
 #: 404.php:18
 msgid "Oops! That page can&rsquo;t be found."
@@ -95,7 +94,7 @@ msgstr "ここへウィジェットを追加."
 msgid "Skip to content"
 msgstr "コンテンツへスキップ"
 
-#: header.php:37
+#: header.php:38
 msgid "Open primary menu"
 msgstr "ナビゲーションを開く"
 
@@ -103,7 +102,7 @@ msgstr "ナビゲーションを開く"
 msgid "Close primary menu"
 msgstr "ナビゲーションを閉じる"
 
-#: header.php:64
+#: header.php:57
 msgctxt "menu"
 msgid "Expanded"
 msgstr "拡張"
@@ -116,43 +115,43 @@ msgstr "アクセントカラー"
 msgid "Theme Options"
 msgstr "テーマオプション"
 
-#: inc/classes/fonts.php:23
+#: inc/classes/fonts.php:24
 msgid "Font"
 msgstr "フォント"
 
-#: inc/classes/fonts.php:29
+#: inc/classes/fonts.php:30
 msgid "Noto Sans JP"
 msgstr "Noto Sans 日本語フォント"
 
-#: inc/classes/fonts.php:30
+#: inc/classes/fonts.php:31
 msgid "Noto Serif JP"
 msgstr "Noto Serif日本語フォント"
 
-#: inc/classes/fonts.php:31
+#: inc/classes/fonts.php:32
 msgid "M PLUS Rounded 1c"
 msgstr "M PLUS Rounded 1c 日本語フォント"
 
-#: inc/classes/fonts.php:32
+#: inc/classes/fonts.php:33
 msgid "Kosugi Maru"
 msgstr "Kosugi Maru フォント"
 
-#: inc/classes/fonts.php:33
+#: inc/classes/fonts.php:34
 msgid "Sawarabi Mincho"
 msgstr "Sawarabi 明朝体 フォント"
 
-#: inc/classes/fonts.php:34
+#: inc/classes/fonts.php:35
 msgid "Sawarabi Gothic"
 msgstr "Sawarabi ゴシック体フォント"
 
-#: inc/classes/fonts.php:35
+#: inc/classes/fonts.php:36
 msgid "Lato"
 msgstr "Latoフォント"
 
-#: inc/classes/fonts.php:36
+#: inc/classes/fonts.php:37
 msgid "Roboto"
 msgstr "Robotoフォント"
 
-#: inc/classes/fonts.php:37
+#: inc/classes/fonts.php:38
 msgid "Merriweather"
 msgstr "Merriweatherフォント"
 
@@ -219,23 +218,21 @@ msgstr "前のポスト"
 msgid "Featured: "
 msgstr "注目"
 
-#: inc/template-tags.php:276
-msgid "Show sub menu"
-msgstr "サブメニューを表示"
-
 #. translators: %s: search query.
 #: search.php:22
 #, php-format
 msgid "Search Results for: %s"
 msgstr "「%s」の検索結果"
 
-#: searchform.php:16
-msgctxt "placeholder"
+#: searchform.php:14 searchform.php:19
+#, fuzzy
+#| msgctxt "placeholder"
+#| msgid "Search"
 msgid "Search"
 msgstr "検索"
 
-#: searchform.php:19
-msgctxt "yoneko"
+#: searchform.php:16
+msgctxt "placeholder"
 msgid "Search"
 msgstr "検索"
 
@@ -320,6 +317,13 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://profiles.wordpress.org/utz119/"
 msgstr ""
+
+#~ msgid "Show sub menu"
+#~ msgstr "サブメニューを表示"
+
+#~ msgctxt "yoneko"
+#~ msgid "Search"
+#~ msgstr "検索"
 
 #~ msgid "Hiragino Sans"
 #~ msgstr "ヒラギノフォント"
