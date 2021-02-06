@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Yoneko\n"
-"POT-Creation-Date: 2020-12-20 12:18-0500\n"
-"PO-Revision-Date: 2020-12-20 14:32-0500\n"
+"POT-Creation-Date: 2021-02-06 16:32-0500\n"
+"PO-Revision-Date: 2021-02-06 17:25-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -20,24 +20,23 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
-"X-Poedit-SearchPathExcluded-1: node_modules\n"
 
-#: 404.php:17
+#: 404.php:18
 msgid "Oops! That page can&rsquo;t be found."
 msgstr "ページが見つかりません。"
 
-#: 404.php:21
+#: 404.php:22
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
 msgstr "お探しのページが見つかりませんでした。検索してみてはいかがですか？"
 
-#: 404.php:30
+#: 404.php:31
 msgid "Most Used Categories"
 msgstr "よく使われるカテゴリー"
 
 #. translators: %1$s: smiley
-#: 404.php:48
+#: 404.php:49
 #, php-format
 msgid "Try looking in the monthly archives. %1$s"
 msgstr "月別アーカイブをご確認ください。 %1$s"
@@ -77,17 +76,17 @@ msgstr "Proudly powered by %s"
 #: footer.php:27
 #, php-format
 msgid "Theme: %1$s by %2$s"
-msgstr "テーマ：%1$s 作者：<span class=\"icon-user\"></span>%2$s"
+msgstr "テーマ：%1$s 作者：%2$s"
 
 #: functions.php:53
 msgid "Primary"
 msgstr "プライマリー"
 
-#: functions.php:127
+#: functions.php:133
 msgid "Sidebar"
 msgstr "サイドバー"
 
-#: functions.php:129
+#: functions.php:135
 msgid "Add widgets here."
 msgstr "ここへウィジェットを追加."
 
@@ -99,7 +98,7 @@ msgstr "コンテンツへスキップ"
 msgid "Open primary menu"
 msgstr "ナビゲーションを開く"
 
-#: header.php:52
+#: header.php:51
 msgid "Close primary menu"
 msgstr "ナビゲーションを閉じる"
 
@@ -121,44 +120,45 @@ msgid "Font"
 msgstr "フォント"
 
 #: inc/classes/fonts.php:30
-msgid "Hiragino Sans"
-msgstr "ヒラギノフォント"
-
-#: inc/classes/fonts.php:31
 msgid "Noto Sans JP"
 msgstr "Noto Sans 日本語フォント"
 
-#: inc/classes/fonts.php:32
+#: inc/classes/fonts.php:31
 msgid "Noto Serif JP"
 msgstr "Noto Serif日本語フォント"
 
-#: inc/classes/fonts.php:33
+#: inc/classes/fonts.php:32
 msgid "M PLUS Rounded 1c"
-msgstr "M PLUS Rounded 1c"
+msgstr "M PLUS Rounded 1c 日本語フォント"
+
+#: inc/classes/fonts.php:33
+msgid "Kosugi Maru"
+msgstr "Kosugi Maru フォント"
 
 #: inc/classes/fonts.php:34
-msgid "Kosugi Maru"
-msgstr "カスギマル フォント"
+msgid "Sawarabi Mincho"
+msgstr "Sawarabi 明朝体 フォント"
 
 #: inc/classes/fonts.php:35
-msgid "Sawarabi Mincho"
-msgstr "サワラビ明朝体 フォント"
+msgid "Sawarabi Gothic"
+msgstr "Sawarabi ゴシック体フォント"
 
 #: inc/classes/fonts.php:36
-msgid "Sawarabi Gothic"
-msgstr "サワラビゴシック体フォント"
-
-#: inc/classes/fonts.php:37
 msgid "Lato"
 msgstr "Latoフォント"
 
-#: inc/classes/fonts.php:38
+#: inc/classes/fonts.php:37
 msgid "Roboto"
 msgstr "Robotoフォント"
 
-#: inc/classes/fonts.php:39
+#: inc/classes/fonts.php:38
 msgid "Merriweather"
 msgstr "Merriweatherフォント"
+
+#: inc/template-functions.php:40
+msgctxt "Added to posts and pages that are missing titles"
+msgid "Untitled"
+msgstr "無題"
 
 #. translators: %s: post date.
 #: inc/template-tags.php:26
@@ -210,17 +210,13 @@ msgstr "コメントを残す<span class=\"screen-reader-text\"> に %s</span>"
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "編集する <span class=\"screen-reader-text\">%s</span>"
 
-#: inc/template-tags.php:183
+#: inc/template-tags.php:181
 msgid "Previous: "
 msgstr "前のポスト"
 
-#: inc/template-tags.php:205
+#: inc/template-tags.php:203
 msgid "Featured: "
 msgstr "注目"
-
-#: inc/template-tags.php:278
-msgid "Show sub menu"
-msgstr "サブメニューを表示"
 
 #. translators: %s: search query.
 #: search.php:22
@@ -228,12 +224,15 @@ msgstr "サブメニューを表示"
 msgid "Search Results for: %s"
 msgstr "「%s」の検索結果"
 
-#: searchform.php:12
-msgctxt "placeholder"
+#: searchform.php:14 searchform.php:19
+#, fuzzy
+#| msgctxt "placeholder"
+#| msgid "Search"
 msgid "Search"
 msgstr "検索"
 
 #: searchform.php:16
+msgctxt "placeholder"
 msgid "Search"
 msgstr "検索"
 
@@ -318,3 +317,13 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://profiles.wordpress.org/utz119/"
 msgstr ""
+
+#~ msgid "Show sub menu"
+#~ msgstr "サブメニューを表示"
+
+#~ msgctxt "yoneko"
+#~ msgid "Search"
+#~ msgstr "検索"
+
+#~ msgid "Hiragino Sans"
+#~ msgstr "ヒラギノフォント"

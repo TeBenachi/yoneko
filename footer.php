@@ -13,7 +13,7 @@
 
 <footer id="colophon" class="site-footer mb-4">
 		
-	<div class="flex container w-full text-center p-6 items-center">
+	<div role="contentinfo" class="flex container w-full text-center p-6 items-center">
 		<div class="site-info text-sm text-center md:text-left">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'yoneko' ) ); ?>">
 			<?php

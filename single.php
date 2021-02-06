@@ -10,7 +10,7 @@
 get_header();
 ?>
 	<div class="container inner-right">
-		<main id="primary" class="site-main">
+		<main id="primary" class="site-main" role="main">
 				<?php
 				while ( have_posts() ) :
 					the_post();
@@ -19,7 +19,7 @@ get_header();
 
 					the_post_navigation(
 						array(
-							'prev_text' => '<div class="post_nav_prev text-left md:text-left"><span class="nav-subtitle font-medium">' . esc_html__( 'Previous', 'yoneko' ) . '</span><br><span class="nav-title font-normal">%title</span></div>',
+							'prev_text' => '<div class="post_nav_prev text-left"><span class="nav-subtitle font-medium">' . esc_html__( 'Previous', 'yoneko' ) . '</span><br><span class="nav-title font-normal">%title</span></div>',
 							
 							'next_text' => '<div class="post_nav_next text-right md:text-right"><span class="nav-subtitle font-medium">' . esc_html__( 'Next', 'yoneko' ) . '</span><br><span class="nav-title font-normal">%title</span></div>',
 						)
